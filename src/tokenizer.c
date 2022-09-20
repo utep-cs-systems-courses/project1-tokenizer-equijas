@@ -6,10 +6,14 @@ int main() {
   puts("->");
   scanf("%s", input);
 
-  space_char('d'); 
+  space_char(input[0]); 
 }
 
 int space_char(char c) {
-  puts("1");
-  return 1; 
+  if (c == 't' || c == ' ') {
+    puts("def a tab or space");
+    return 1;
+  }
+  puts("def NOT, returning 0");
+  return 0;
 }
