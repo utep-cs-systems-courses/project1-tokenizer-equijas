@@ -6,15 +6,16 @@ int main() {
   puts("->");
   scanf("%s", input);
 
-  word_start(input); 
+  puts(word_start(input));
+  // puts(word_terminator(input));  
 }
 
 int space_char(char c) {
   if (c == '\t' || c == ' ') {
-    puts("def a tab or space");
+    puts("tab/space");
     return 1;
   }
-  puts("def NOT, returning 0");
+  puts("not t/s");
   return 0;
 }
 
@@ -26,8 +27,15 @@ int non_space_char(char c) {
 }
 
 char *word_start(char *s) { 
-  for (int i = 0; i < 3; i++) {
-    printf("%c\n", s[i]); 
+  while(space_char(*s)) {
+    s++;   
   }
-  return "c"; 
+  return s; 
+}
+
+char *word_terminator(char *word) {
+  while(non_space_char(*word)) {
+    word++; 
+  }
+  return word; 
 }
