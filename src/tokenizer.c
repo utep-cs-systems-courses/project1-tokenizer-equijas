@@ -12,25 +12,31 @@ int main() {
 
 int space_char(char c) {
   if (c == '\t' || c == ' ') {
-    puts("tab/space");
     return 1;
   }
-  puts("not t/s");
   return 0;
 }
 
 int non_space_char(char c) {
   if (c == '\t' || c == ' ') {
+    printf("%c\n", c); 
     return 0; 
   }
+  printf("%c\n", c); 
   return 1; 
 }
 
 char *word_start(char *s) { 
-  while(space_char(*s)) {
-    s++;   
+  char *p;
+  // printf("%c", *p); 
+  if(non_space_char(*s)) {
+    puts("word start, yes");
+    p = s; 
+    printf("%c\n", *p); 
+    return s;
   }
-  return s; 
+  puts("returning p"); 
+  return p; 
 }
 
 char *word_terminator(char *word) {
