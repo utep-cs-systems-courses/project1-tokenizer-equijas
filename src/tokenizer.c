@@ -27,13 +27,13 @@ int non_space_char(char c) {
 }
 
 char *word_start(char *s) { 
-  char *p;
+  char *p = malloc(6);
   // printf("%c", *p); 
   if(non_space_char(*s)) {
     puts("word start, yes");
     p = s; 
     printf("%c\n", *p); 
-    return s;
+    return p;
   }
   puts("returning p"); 
   return p; 
