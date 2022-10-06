@@ -1,47 +1,78 @@
 #include <stdio.h>
 #include "tokenizer.h"
+#include <stdlib.h>
 
 int main() {
   char input[20];
-  puts("->");
-  scanf("%s", input);
+  printf("->");
+  fgets(input, 20, stdin);
 
-  puts(word_start(input));
-  // puts(word_terminator(input));  
+  int count = 2; 
+  printf("%d", count); 
 }
 
 int space_char(char c) {
-  if (c == '\t' || c == ' ') {
+  switch (c) {
+  case '\t':
     return 1;
+    break; 
+  case ' ':
+    return 1;
+    break; 
+  case '\n':
+    return 1;
+    break; 
+  case '\0':
+    return 1;
+    break; 
+  default:
+    return 0;
+    break; 
   }
-  return 0;
+
 }
 
 int non_space_char(char c) {
-  if (c == '\t' || c == ' ') {
-    printf("%c\n", c); 
-    return 0; 
-  }
-  printf("%c\n", c); 
-  return 1; 
+  switch (c) {
+  case '\t':
+    return 1; 
+    break; 
+  case ' ':
+    return 1;
+    break; 
+  case '\n':
+    return 1;
+    break; 
+  case '\0':
+    return 1;
+    break; 
+  default:
+    return 0;
+    break; 
+  } 
 }
 
-char *word_start(char *s) { 
-  char *p = malloc(6);
-  // printf("%c", *p); 
-  if(non_space_char(*s)) {
-    puts("word start, yes");
-    p = s; 
-    printf("%c\n", *p); 
-    return p;
+char *word_start(char *s) {  
+  while (space_char(*s)) {
+    s++;
   }
-  puts("returning p"); 
-  return p; 
+  return s; 
 }
 
 char *word_terminator(char *word) {
-  while(non_space_char(*word)) {
-    word++; 
+  while (non_space_char(*word)) {
+    word++;
   }
   return word; 
 }
+
+int count_words(char *s) {
+  int word_count = 0;
+  while (*s != '\0') {
+    s = word_start(s);
+    s = word_terminator(s);
+    word_count++; 
+  }
+  return word_count; 
+}
+
