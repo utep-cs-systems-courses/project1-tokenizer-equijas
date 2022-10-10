@@ -10,7 +10,13 @@ int main() {
   //puts(input);    // display string
   
   int test = count_words(input);
-  printf("%d\n", test); 
+  printf("%d\n", test);
+
+  copy_str(input, 19);
+
+  //testing tokenize
+  char **tokens = tokenize(input);
+  print_tokens(tokens); 
 
   return 0; 
 }
