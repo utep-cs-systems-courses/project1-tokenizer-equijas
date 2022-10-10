@@ -3,14 +3,14 @@
 
 int main() {
 
-  char input[30];
+  char input[100];
   printf("Enter a sentence!\n>> ");
   fgets(input, sizeof(input), stdin);  // read string
-  // printf("Input: ");
-  // puts(input);    // display string
-  return 0;
+  //printf("Input: ");
+  //puts(input);    // display string
   
-  // printf("%d", count_words(input));
+  int test = count_words(input);
+  printf("%d\n", test); 
 
   return 0; 
 }
