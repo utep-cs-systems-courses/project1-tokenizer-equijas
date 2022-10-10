@@ -28,3 +28,36 @@ void add_history(List *list, char *str) {
     head->next = new_record;
   }
 }
+
+char *get_history(List *list, int id) {
+  Item *node = list->root;
+
+  while (node != NULL) {
+    if (node->id == id) {
+      return node->str;
+    }
+    node = node->next;
+  }
+  return NULL;
+}
+
+void print_history(List *list) {
+  Item *node = list->root;
+  if(node == NULL) {
+    printf("History is empty\n");
+    return;
+  }
+  while (node != NULL) {
+    printf("[%d] %s\n",node->id, node->str);
+    node = node->next;
+  }
+}
+
+void free_history(List *list) {
+  Item *node = list->root;
+  while (node != NULL) {
+    free(node);
+    node = node->next;
+  }
+  free(list);
+}

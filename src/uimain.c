@@ -6,25 +6,36 @@
 int main() {
   List *program_history =init_history(); 
   char input[100];
-  printf("\tEnter a sentence!\n\tEnter 'h' for history\n>> ");
-  fgets(input, sizeof(input), stdin);  // read string
-  //printf("Input: ");
-  //puts(input);    // display string
+  int done = 0;
+
+  while (done == 0) {
+    printf("\tWelcome! Enter a sentence below!\n\tEnter 'h' for history\n\tEnter 'q' to quit\n>> ");
+    fgets(input, sizeof(input), stdin);  // read string
+    //printf("Input: ");
+    //puts(input);    // display string
 
 
-  if (strcmp(input, "h") == 0) {
-    add_history(program_history, input);
-    puts("inside"); 
+    if (strcmp(input, "h\n") == 0) {
+      //printf("inside!"); 
+    }
+    else if (strcmp(input,"q\n") == 0) {
+	printf("quitting\n");
+	done = 1; 
+	break; 
+    }
+    else {
+      int word_count = count_words(input);
+      printf("Number of words: %d\n", word_count);
+      char **tokens = tokenize(input);
+      print_tokens(tokens);
+      free_tokens(tokens); 
+    }
   }
-  
-  int test = count_words(input);
-  printf("%d\n", test);
 
-  copy_str(input, 19);
-
-  //testing tokenize
-  char **tokens = tokenize(input);
-  print_tokens(tokens); 
+  printf("See you later!\n");
+  free_history(program_history);
+  return 0;
+   
 
   return 0; 
 }
