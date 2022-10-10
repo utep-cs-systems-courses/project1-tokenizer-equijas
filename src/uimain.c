@@ -11,19 +11,18 @@ int main() {
   while (done == 0) {
     printf("\tWelcome! Enter a sentence below!\n\tEnter 'h' for history\n\tEnter 'q' to quit\n>> ");
     fgets(input, sizeof(input), stdin);  // read string
-    //printf("Input: ");
-    //puts(input);    // display string
-
+    
 
     if (strcmp(input, "h\n") == 0) {
-      //printf("inside!"); 
+      print_history(program_history); 
     }
     else if (strcmp(input,"q\n") == 0) {
-	printf("quitting\n");
+        // printf("quitting\n");
 	done = 1; 
 	break; 
     }
     else {
+      add_history(program_history, input);
       int word_count = count_words(input);
       printf("Number of words: %d\n", word_count);
       char **tokens = tokenize(input);
@@ -36,6 +35,4 @@ int main() {
   free_history(program_history);
   return 0;
    
-
-  return 0; 
 }
