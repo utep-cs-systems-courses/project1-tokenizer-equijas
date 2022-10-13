@@ -64,13 +64,13 @@ char **tokenize(char* str)
   int i;
   
   for(i = 0; i < num_words; i++) {
-    start_word = word_start(str);
-    end_word = word_terminator(start_word);
-    word_size = end_word - start_word;
-    tokens[i] = copy_str(start_word, word_size);
-    str = word_start(end_word);
+    start_word = word_start(str); //beginning of word
+    end_word = word_terminator(start_word); //end of work
+    word_size = end_word - start_word; //size of work 
+    tokens[i] = copy_str(start_word, word_size); // make string, add to array
+    str = word_start(end_word); //str moves to next word
   }
-  tokens[i] = '\0';
+  tokens[i] = '\0'; // adds zero termninator
   return tokens;
 }
 

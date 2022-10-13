@@ -6,7 +6,7 @@
 
 
 List* init_history() {
-  List *history = (List*) malloc(sizeof(List)*100);
+  List *history = (List*) malloc(sizeof(List)*2);
   history->root = NULL;
   return history; 
 }
